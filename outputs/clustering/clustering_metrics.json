@@ -1,0 +1,10 @@
+{
+  "silhouette_score": 0.18284555744919453,
+  "davies_bouldin_index": 1.5308576300166234,
+  "calinski_harabasz_index": 116.20428478395418,
+  "inertia": 14439.578477844383,
+  "n_clusters": 5,
+  "n_samples": 858,
+  "n_features": 26,
+  "pca_variance_explained": 0.3918362831835212
+}
