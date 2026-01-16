@@ -69,9 +69,24 @@ A modular machine learning pipeline that predicts regulatory action on data brea
 5. **Evaluation** - Metrics (accuracy, precision, recall, F1, ROC-AUC) and visualizations
 
 ### Quick Start
+
+**Option 1: Interactive Jupyter Notebook (Recommended)**
 ```bash
+# Install dependencies and run interactive pipeline
 cd BA798_WEEK1_PRACTICE
+git checkout MLMODEL
+uv sync
 jupyter notebook notebooks/05_main_pipeline.ipynb
+```
+See `JUPYTER_GUIDE.md` for detailed Jupyter instructions.
+
+**Option 2: Command-Line Script**
+```bash
+# Run pipeline automatically
+cd BA798_WEEK1_PRACTICE
+git checkout MLMODEL
+uv sync
+python run_pipeline.py
 ```
 
 See `docs/PIPELINE_DOCUMENTATION.md` for detailed information.
