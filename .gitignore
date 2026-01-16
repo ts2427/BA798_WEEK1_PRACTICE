@@ -1,9 +1,18 @@
-# Python
+# ============================================================================
+# Python Bytecode & Cache
+# ============================================================================
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+*.pyc
+*.pyo
+*.pyd
+
+# ============================================================================
+# Python Build & Distribution
+# ============================================================================
 build/
 develop-eggs/
 dist/
@@ -19,42 +28,182 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
-# Virtual environments
+# ============================================================================
+# Virtual Environments
+# ============================================================================
 venv/
 env/
 ENV/
+env.bak/
+venv.bak/
 .venv
+.python-version.local
 
-# UV
+# ============================================================================
+# UV Package Manager
+# ============================================================================
 .uv/
 uv.lock
+.uv-cache/
 
-# Jupyter
+# ============================================================================
+# Jupyter Notebooks (Checkpoints & Temp Files)
+# ============================================================================
 .ipynb_checkpoints/
+*/.ipynb_checkpoints/
 *.ipynb_checkpoints
+.jupyter/
+~*.ipynb
 
-# IDE
+# ============================================================================
+# IDE & Editor Configuration
+# ============================================================================
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 .DS_Store
+.sublime-project
+.sublime-workspace
+.emacs*
+.vim/
+*.vscode
+.pylintrc
+.mypy.ini
 
-# Testing
+# ============================================================================
+# Testing & Coverage
+# ============================================================================
 .pytest_cache/
+.tox/
 .coverage
+.coverage.*
 htmlcov/
+.nose*
+coverage.xml
+*.cover
 
-# Outputs (keep data/raw/ but ignore processed/predictions/outputs)
-/outputs/models/*.pkl
-/outputs/metrics/*.json
-/outputs/metrics/*.txt
-/outputs/figures/*.png
-/data/processed/*.csv
-/data/predictions/*.csv
+# ============================================================================
+# ML Pipeline Generated Outputs (DO NOT TRACK)
+# ============================================================================
+# Models
+outputs/models/*.pkl
+outputs/models/__pycache__/
 
-# OS
+# Metrics & Reports
+outputs/metrics/*.json
+outputs/metrics/*.txt
+outputs/metrics/experiment_log.json
+
+# Visualizations
+outputs/figures/*.png
+outputs/figures/*/*.png
+outputs/figures/__pycache__/
+
+# Processed Data & Predictions
+data/processed/*.csv
+data/processed/__pycache__/
+data/predictions/*.csv
+data/predictions/__pycache__/
+
+# ============================================================================
+# Logs & Temporary Files
+# ============================================================================
+*.log
+*.log.*
+logs/
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.cache
+*.swp
+*~
+
+# ============================================================================
+# Operating System Files
+# ============================================================================
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+desktop.ini
+.windows-terminal-state.json
+
+# ============================================================================
+# Environment & Configuration Secrets
+# ============================================================================
+.env
+.env.local
+.env.*.local
+*.env
+secrets.json
+credentials.json
+config.local.py
+settings.local.py
+
+# ============================================================================
+# Package Management Lockfiles (Optional - Set to False to Track)
+# ============================================================================
+# Note: Uncomment below if you want to track lockfiles
+# pip-log.txt
+# pip-delete-this-directory.txt
+# poetry.lock
+# Pipfile.lock
+
+# ============================================================================
+# MacOS Specific
+# ============================================================================
+.AppleDouble
+.LSOverride
+._*
+.TemporaryItems
+
+# ============================================================================
+# Windows Specific
+# ============================================================================
+$RECYCLE.BIN/
+ehthumbs.db
+*.lnk
+
+# ============================================================================
+# Linux Specific
+# ============================================================================
+.*
+!.gitignore
+!.github
+!.gitkeep
+
+# ============================================================================
+# Data Files (Large datasets - keep raw only)
+# ============================================================================
+# Keep: data/raw/*.csv (original dataset)
+# Ignore: All other CSV files in data folder
+data/**/*.csv
+!data/raw/
+!data/raw/*.csv
+
+# ============================================================================
+# Miscellaneous
+# ============================================================================
+.vscode-settings
+.vscode-tasks
+*.sublime-project
+*.sublime-workspace
+.atom/
+.idea_modules/
+*.iml
+out/
+.gradle
+.gradle/
+.grpc
+venv.local/
+.pre-commit-config.yaml.local
