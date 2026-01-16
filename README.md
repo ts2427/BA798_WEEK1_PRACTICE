@@ -77,9 +77,34 @@ jupyter notebook notebooks/05_main_pipeline.ipynb
 See `docs/PIPELINE_DOCUMENTATION.md` for detailed information.
 
 ## Getting Started
-1. Clone this repository
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run the analysis notebooks in the `notebooks/` folder
+
+### Prerequisites
+- Python 3.9+
+- [UV package manager](https://docs.astral.sh/uv/) (recommended) or pip
+
+### Installation with UV (Recommended)
+
+```bash
+# Clone the repository
+git clone https://github.com/ts2427/BA798_WEEK1_PRACTICE.git
+cd BA798_WEEK1_PRACTICE
+
+# Checkout MLMODEL branch
+git checkout MLMODEL
+
+# Install dependencies using UV
+uv sync
+
+# Run the ML pipeline
+jupyter notebook notebooks/05_main_pipeline.ipynb
+```
+
+### Installation with pip (Alternative)
+
+```bash
+pip install -r requirements.txt
+jupyter notebook notebooks/05_main_pipeline.ipynb
+```
 
 ## Author
 BA798 - Week 1 Practice Project

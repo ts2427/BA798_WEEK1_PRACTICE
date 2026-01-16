@@ -41,12 +41,16 @@
   - `notebooks/` - Jupyter notebooks
   - `docs/` - Documentation files
 
-### Dependencies
-- Created `requirements.txt` with ML stack:
-  - pandas, numpy, scikit-learn, xgboost
-  - matplotlib, seaborn for visualization
-  - joblib for model serialization
-  - jupyter for notebook execution
+### Dependencies & Package Management
+- Created `pyproject.toml` with modern Python packaging (PEP 517/518)
+- Configured UV as primary package manager for faster dependency resolution
+- Created `requirements.txt` as backup for pip-based installations
+- Dependencies include:
+  - pandas, numpy, scikit-learn, xgboost (ML stack)
+  - matplotlib, seaborn (visualization)
+  - joblib (model serialization)
+  - jupyter, ipykernel (notebook execution)
+  - shap (feature importance explanation)
 
 ---
 
@@ -380,5 +384,40 @@ requirements.txt (11 dependencies)
 
 ---
 
+---
+
+## 2026-01-16 - UV Package Manager Integration
+
+### Modern Python Packaging
+- Created `pyproject.toml` following PEP 517/518 standards
+- Configured UV as primary package manager
+  - Faster dependency resolution than pip
+  - Better lock file management for reproducibility
+  - Parallel dependency installation
+- Maintained `requirements.txt` for pip compatibility
+- Updated README with UV installation instructions
+- Updated PIPELINE_DOCUMENTATION.md with UV workflows
+- Optional dependencies for development (jupyter, pytest)
+
+### Benefits of UV
+- Faster installation (5-10x speedup on first install)
+- Better dependency conflict detection
+- Reproducible builds via `uv.lock`
+- Single configuration file (pyproject.toml)
+- Python version management via `uv run`
+
+### Installation Methods
+```bash
+# Recommended: UV
+uv sync
+uv run jupyter notebook notebooks/05_main_pipeline.ipynb
+
+# Alternative: pip
+pip install -r requirements.txt
+jupyter notebook notebooks/05_main_pipeline.ipynb
+```
+
+---
+
 **Last Updated:** 2026-01-16
-**Status:** Ready for testing and execution
+**Status:** Complete with UV integration, ready for execution

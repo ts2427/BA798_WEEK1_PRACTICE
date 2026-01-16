@@ -161,10 +161,21 @@ timestamp = get_timestamp()
 
 ## Running the Pipeline
 
-### Quick Start
+### Quick Start with UV (Recommended)
 
 ```bash
 cd BA798_WEEK1_PRACTICE
+git checkout MLMODEL
+uv sync
+uv run jupyter notebook notebooks/05_main_pipeline.ipynb
+```
+
+### Quick Start with pip (Alternative)
+
+```bash
+cd BA798_WEEK1_PRACTICE
+git checkout MLMODEL
+pip install -r requirements.txt
 jupyter notebook notebooks/05_main_pipeline.ipynb
 ```
 
