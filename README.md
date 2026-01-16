@@ -37,3 +37,6 @@ BA798_WEEK1_PRACTICE/
 
 ## Author
 BA798 - Week 1 Practice Project
+
+## License
+This project is for educational purposes only.
