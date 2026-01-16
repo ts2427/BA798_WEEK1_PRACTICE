@@ -34,7 +34,7 @@ class DataLoader:
         if missing_cols:
             raise ValueError(f"Missing required columns: {missing_cols}")
 
-        print(f"✓ Schema validation passed")
+        print("[OK] Schema validation passed")
         return True
 
     def get_target_distribution(self):
@@ -87,4 +87,4 @@ class DataLoader:
         self.y_train.to_csv(PROCESSED_DATA_DIR / "y_train.csv", index=False)
         self.y_test.to_csv(PROCESSED_DATA_DIR / "y_test.csv", index=False)
 
-        print(f"✓ Splits saved to {PROCESSED_DATA_DIR}")
+        print(f"[OK] Splits saved to {PROCESSED_DATA_DIR}")

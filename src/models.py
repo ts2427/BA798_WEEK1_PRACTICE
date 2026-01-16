@@ -21,7 +21,7 @@ class RandomForestModel:
         print("Training Random Forest...")
         self.model.fit(X, y)
         self._get_feature_importance(X)
-        print("✓ Random Forest training complete")
+        print("[OK] Random Forest training complete")
         return self
 
     def predict(self, X):
@@ -45,12 +45,12 @@ class RandomForestModel:
     def save(self, filepath):
         """Save model to file."""
         save_model(self.model, filepath)
-        print(f"✓ Random Forest model saved to {filepath}")
+        print(f"[OK] Random Forest model saved to {filepath}")
 
     def load(self, filepath):
         """Load model from file."""
         self.model = load_model(filepath)
-        print(f"✓ Random Forest model loaded from {filepath}")
+        print(f"[OK] Random Forest model loaded from {filepath}")
 
 
 class XGBoostModel:
@@ -67,7 +67,7 @@ class XGBoostModel:
         print("Training XGBoost...")
         self.model.fit(X, y)
         self._get_feature_importance(X)
-        print("✓ XGBoost training complete")
+        print("[OK] XGBoost training complete")
         return self
 
     def predict(self, X):
@@ -91,9 +91,9 @@ class XGBoostModel:
     def save(self, filepath):
         """Save model to file."""
         save_model(self.model, filepath)
-        print(f"✓ XGBoost model saved to {filepath}")
+        print(f"[OK] XGBoost model saved to {filepath}")
 
     def load(self, filepath):
         """Load model from file."""
         self.model = load_model(filepath)
-        print(f"✓ XGBoost model loaded from {filepath}")
+        print(f"[OK] XGBoost model loaded from {filepath}")

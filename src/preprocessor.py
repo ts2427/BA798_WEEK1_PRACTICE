@@ -27,10 +27,13 @@ class DataPreprocessor:
         """Handle missing values in dataset."""
         X_clean = X.copy()
 
-        # Fill numerical features with median
+        # Fill numerical features with median (convert to numeric first)
         for col in self.numerical_features:
-            if col in X_clean.columns and X_clean[col].isnull().sum() > 0:
-                X_clean[col].fillna(X_clean[col].median(), inplace=True)
+            if col in X_clean.columns:
+                # Try to convert to numeric, coerce errors to NaN
+                X_clean[col] = pd.to_numeric(X_clean[col], errors='coerce')
+                if X_clean[col].isnull().sum() > 0:
+                    X_clean[col].fillna(X_clean[col].median(), inplace=True)
 
         # Fill categorical features with mode
         for col in self.categorical_features:
@@ -112,7 +115,7 @@ class DataPreprocessor:
         # Get feature names
         self._get_feature_names(X_eng)
 
-        print(f"✓ Data preprocessed: {X_transformed.shape[0]} rows, {X_transformed.shape[1]} features")
+        print(f"[OK] Data preprocessed: {X_transformed.shape[0]} rows, {X_transformed.shape[1]} features")
         return X_transformed
 
     def transform(self, X):
@@ -147,11 +150,11 @@ class DataPreprocessor:
     def save(self, filepath):
         """Save preprocessor to file."""
         save_model(self, filepath)
-        print(f"✓ Preprocessor saved to {filepath}")
+        print(f"[OK] Preprocessor saved to {filepath}")
 
     def load(self, filepath):
         """Load preprocessor from file."""
         loaded = load_model(filepath)
         self.preprocessor = loaded.preprocessor
         self.feature_names = loaded.feature_names
-        print(f"✓ Preprocessor loaded from {filepath}")
+        print(f"[OK] Preprocessor loaded from {filepath}")

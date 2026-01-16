@@ -48,7 +48,7 @@ class ModelEvaluator:
         filepath = FIGURES_DIR / "confusion_matrices" / f"{model_name.lower()}_confusion_matrix.png"
         plt.savefig(filepath, dpi=300, bbox_inches="tight")
         plt.close()
-        print(f"✓ Confusion matrix saved: {filepath}")
+        print(f"[OK] Confusion matrix saved: {filepath}")
 
     def plot_roc_curves(self, models_dict, X_test, y_test):
         """Plot and save ROC curves for all models."""
@@ -70,7 +70,7 @@ class ModelEvaluator:
         filepath = FIGURES_DIR / "roc_curves" / "roc_comparison.png"
         plt.savefig(filepath, dpi=300, bbox_inches="tight")
         plt.close()
-        print(f"✓ ROC curves saved: {filepath}")
+        print(f"[OK] ROC curves saved: {filepath}")
 
     def plot_feature_importance(self, model, model_name, feature_names, top_n=20):
         """Plot and save feature importance."""
@@ -95,7 +95,7 @@ class ModelEvaluator:
         filepath = FIGURES_DIR / "feature_importance" / f"{model_name.lower()}_feature_importance.png"
         plt.savefig(filepath, dpi=300, bbox_inches="tight")
         plt.close()
-        print(f"✓ Feature importance saved: {filepath}")
+        print(f"[OK] Feature importance saved: {filepath}")
 
     def compare_models(self, models_dict, X_test, y_test):
         """Compare all models and return metrics table."""
@@ -127,14 +127,14 @@ class ModelEvaluator:
             f.write("=" * 50 + "\n\n")
             f.write(report)
 
-        print(f"✓ Classification report saved: {filepath}")
+        print(f"[OK] Classification report saved: {filepath}")
 
     def save_metrics(self, metrics_dict):
         """Save all metrics to JSON."""
         timestamp = get_timestamp()
         filepath = METRICS_DIR / f"model_comparison_{timestamp}.json"
         save_metrics(metrics_dict, filepath)
-        print(f"✓ Metrics saved: {filepath}")
+        print(f"[OK] Metrics saved: {filepath}")
 
     def generate_report(self, models_dict, X_test, y_test, feature_names):
         """Generate complete evaluation report."""

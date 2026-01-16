@@ -28,7 +28,7 @@ class ModelTrainer:
             scoring=METRICS,
             return_train_score=True
         )
-        print(f"✓ Cross-validation complete")
+        print(f"[OK] Cross-validation complete")
         return cv_results
 
     def train_all_models(self, X_train, y_train):
@@ -46,6 +46,6 @@ class ModelTrainer:
         models["xgboost"] = xgb_model
 
         self.trained_models = models
-        print(f"\n✓ All models trained")
+        print(f"\n[OK] All models trained")
 
         return models
