@@ -13,10 +13,29 @@ This project analyzes data breaches to understand their causes, impacts, and tre
 ```
 BA798_WEEK1_PRACTICE/
 ├── README.md
-├── data/           # Raw and processed datasets
-├── notebooks/      # Jupyter notebooks for analysis
-├── scripts/        # Python scripts for data processing
-└── reports/        # Analysis findings and visualizations
+├── data/
+│   ├── raw/                    # Raw dataset
+│   ├── processed/              # Train/test splits
+│   └── predictions/            # Model predictions
+├── src/                        # ML pipeline modules
+│   ├── config.py              # Configuration & paths
+│   ├── data_loader.py         # Data loading utilities
+│   ├── preprocessor.py        # Feature engineering
+│   ├── models.py              # RF & XGBoost models
+│   ├── trainer.py             # Model training
+│   ├── evaluator.py           # Evaluation & visualization
+│   └── utils.py               # Helper utilities
+├── notebooks/                  # Jupyter notebooks
+│   └── 05_main_pipeline.ipynb # Complete ML pipeline
+├── outputs/                    # Model artifacts & results
+│   ├── models/                # Serialized models
+│   ├── metrics/               # JSON metrics & reports
+│   └── figures/               # Visualizations
+├── docs/                       # Documentation
+│   ├── PIPELINE_DOCUMENTATION.md
+│   └── IMPLEMENTATION_LOG.md
+├── requirements.txt            # Python dependencies
+└── .gitignore
 ```
 
 ## Data Sources
@@ -26,14 +45,84 @@ BA798_WEEK1_PRACTICE/
 
 ## Technologies Used
 - Python
-- Pandas
-- Matplotlib / Seaborn
+- Pandas, NumPy, Scikit-learn
+- XGBoost
+- Matplotlib, Seaborn
 - Jupyter Notebooks
 
+## ML Pipeline
+
+A modular machine learning pipeline that predicts regulatory action on data breaches.
+
+### Target Variable
+**`has_any_regulatory_action`** - Binary classification predicting whether a breach will result in regulatory action from FTC, FCC, or State Attorney Generals.
+
+### Models
+- **Random Forest** - 100 estimators, balanced class weights
+- **XGBoost** - 100 estimators, learning_rate=0.1
+
+### Pipeline Components
+1. **Data Loading** - Stratified train/test split (80/20)
+2. **Preprocessing** - Missing value handling, feature encoding, feature scaling
+3. **Feature Engineering** - breach_intensity, regulatory_risk_score, attack_surface
+4. **Model Training** - Train both RF and XGBoost in parallel
+5. **Evaluation** - Metrics (accuracy, precision, recall, F1, ROC-AUC) and visualizations
+
+### Quick Start
+
+**Option 1: Interactive Jupyter Notebook (Recommended)**
+```bash
+# Install dependencies and run interactive pipeline
+cd BA798_WEEK1_PRACTICE
+git checkout MLMODEL
+uv sync
+jupyter notebook notebooks/05_main_pipeline.ipynb
+```
+See `JUPYTER_GUIDE.md` for detailed Jupyter instructions.
+
+**Option 2: Command-Line Script**
+```bash
+# Run pipeline automatically
+cd BA798_WEEK1_PRACTICE
+git checkout MLMODEL
+uv sync
+python run_pipeline.py
+```
+
+See `docs/PIPELINE_DOCUMENTATION.md` for detailed information.
+
 ## Getting Started
-1. Clone this repository
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run the analysis notebooks in the `notebooks/` folder
+
+### Prerequisites
+- Python 3.9+
+- [UV package manager](https://docs.astral.sh/uv/) (recommended) or pip
+
+### Installation with UV (Recommended)
+
+```bash
+# Clone the repository
+git clone https://github.com/ts2427/BA798_WEEK1_PRACTICE.git
+cd BA798_WEEK1_PRACTICE
+
+# Checkout MLMODEL branch
+git checkout MLMODEL
+
+# Install dependencies using UV
+uv sync
+
+# Run the ML pipeline
+jupyter notebook notebooks/05_main_pipeline.ipynb
+```
+
+### Installation with pip (Alternative)
+
+```bash
+pip install -r requirements.txt
+jupyter notebook notebooks/05_main_pipeline.ipynb
+```
 
 ## Author
 BA798 - Week 1 Practice Project
+
+## License
+This project is for educational purposes only.
